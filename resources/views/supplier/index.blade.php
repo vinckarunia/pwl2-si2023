@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Data Products</title>
+    <title>Data Suppliers</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background: lightgray">
@@ -13,37 +13,29 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">PRODUCTS</h3>
+                    <h3 class="text-center my-4">SUPPLIERS</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('products.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
+                        <a href="{{ route('suppliers.create') }}" class="btn btn-md btn-success mb-3">ADD SUPPLIER</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">IMAGE</th>
-                                    <th scope="col">TITLE</th>
-                                    <th scope="col">CATEGORY</th>
-                                    <th scope="col">PRICE</th>
-                                    <th scope="col">STOCK</th>
+                                    <th scope="col">SUPPLIER NAME</th>
+                                    <th scope="col">PIC SUPPLIER</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($products as $product)
+                                @forelse ($suppliers as $supplier)
                                 <tr>
+                                    <td>{{ $supplier->supplier_name }}</td>
+                                    <td>{{ $supplier->pic_supplier }}</td>
                                     <td class="text-center">
-                                        <img src="{{ asset('/storage/products/' . $product->image) }}" class="rounded" style="width: 150px">
-                                    </td>
-                                    <td>{{ $product->title }}</td>
-                                    <td>{{ $product->product_category_name }}</td>
-                                    <td>{{ "Rp " . number_format($product->price, 2, ',', '.') }}</td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?')" action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?')" action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST">
+                                            <a href="{{ route('suppliers.show', $supplier->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
 
@@ -53,12 +45,12 @@
                                 </tr>
                             @empty
                                 <div class="alert alert-danger">
-                                    Data Products belum Tersedia.
+                                    Data Suppliers belum Tersedia.
                                 </div>
                                 @endforelse
                             </tbody>
                         </table>
-                        {{ $products->links() }}
+                        {{ $suppliers->links() }}
                     </div>
                 </div>
             </div>
