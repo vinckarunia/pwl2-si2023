@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Data Products</title>
+    <title>Data Transaksi Penjualan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background: lightgray">
@@ -13,39 +13,39 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">PRODUCTS</h3>
+                    <h3 class="text-center my-4">TRANSAKSI PENJUALAN</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('products.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
+                        <a href="{{ route('transactions.create') }}" class="btn btn-md btn-success mb-3">ADD TRANSACTION</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">IMAGE</th>
-                                    <th scope="col">NAMA SUPPLIER</th>
-                                    <th scope="col">TITLE</th>
-                                    <th scope="col">CATEGORY</th>
-                                    <th scope="col">PRICE</th>
-                                    <th scope="col">STOCK</th>
+                                    <th scope="col">TANGGAL TRANSAKSI</th>
+                                    <th scope="col">NAMA KASIR</th>
+                                    <th scope="col">NAMA PRODUK</th>
+                                    <th scope="col">KATEGORI PRODUK</th>
+                                    <th scope="col">HARGA</th>
+                                    <th scope="col">JUMLAH</th>
+                                    <th scope="col">TOTAL HARGA</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($products as $product)
+                                @forelse ($transactions as $transaction)
                                 <tr>
+                                    <td>{{ $transaction->tanggal_transaksi }}</td>
+                                    <td>{{ $transaction->nama_kasir }}</td>
+                                    <td>{{ $transaction->nama_produk }}</td>
+                                    <td>{{ $transaction->kategori_produk }}</td>
+                                    <td>{{ "Rp " . number_format($transaction->harga, 2, ',', '.') }}</td>
+                                    <td>{{ $transaction->jumlah_pembelian }}</td>
+                                    <td>{{ "Rp " . number_format($transaction->total_harga, 2, ',', '.') }}</td>
                                     <td class="text-center">
-                                        <img src="{{ asset('/storage/products/' . $product->image) }}" class="rounded" style="width: 150px">
-                                    </td>
-                                    <td>{{ $product->supplier_name }}</td>
-                                    <td>{{ $product->title }}</td>
-                                    <td>{{ $product->product_category_name }}</td>
-                                    <td>{{ "Rp " . number_format($product->price, 2, ',', '.') }}</td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?')" action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?')" action="{{ route('transactions.destroy', $transaction->id) }}" method="POST">
+                                            <a href="{{ route('transactions.show', $transaction->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('transactions.edit', $transaction->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
 
@@ -55,12 +55,12 @@
                                 </tr>
                             @empty
                                 <div class="alert alert-danger">
-                                    Data Products belum Tersedia.
+                                    Data Transaksi Penjualan belum Tersedia.
                                 </div>
                                 @endforelse
                             </tbody>
                         </table>
-                        {{ $products->links() }}
+                        {{ $transactions->links() }}
                     </div>
                 </div>
             </div>

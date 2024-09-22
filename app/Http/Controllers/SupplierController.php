@@ -26,6 +26,6 @@ class SupplierController extends Controller
                             ->latest()
                             ->paginate(10);
         //render view with suppliers
-        return view('supplier.index', compact('suppliers'));
+        return view('suppliers.index', compact('suppliers'));
     }
 }   

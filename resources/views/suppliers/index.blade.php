@@ -22,8 +22,10 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">SUPPLIER NAME</th>
+                                    <th scope="col">NAMA SUPPLIER</th>
+                                    <th scope="col">ALAMAT SUPPLIER</th>
                                     <th scope="col">PIC SUPPLIER</th>
+                                    <th scope="col">NO HP PIC SUPPLIER</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
@@ -31,7 +33,9 @@
                                 @forelse ($suppliers as $supplier)
                                 <tr>
                                     <td>{{ $supplier->supplier_name }}</td>
+                                    <td>{{ $supplier->alamat_supplier }}</td>
                                     <td>{{ $supplier->pic_supplier }}</td>
+                                    <td>{{ $supplier->no_hp_pic_supplier }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?')" action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST">
                                             <a href="{{ route('suppliers.show', $supplier->id) }}" class="btn btn-sm btn-dark">SHOW</a>
