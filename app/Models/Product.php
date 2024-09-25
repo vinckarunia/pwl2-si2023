@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -16,4 +17,27 @@ class Product extends Model
                     ->join('suppliers', 'suppliers.id', '=', 'products.supplier_id');
         return $sql;
     }
+
+    public function get_category_product(){
+        //get all categories
+        $sql = DB::table('category_product')->select('*');
+
+        return $sql;
+    }
+
+    /**
+     * fillable
+     * 
+     * @var array
+     */
+
+    protected $fillable = [
+        'image',
+        'title',
+        'product_category_id',
+        'supplier_id',
+        'description',
+        'price',
+        'stock'
+    ];
 }
