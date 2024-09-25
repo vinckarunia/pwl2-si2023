@@ -41,6 +41,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table){
             $table->id();
             $table->foreignId('product_id')->nullable()->index();
+            $table->foreignId('product_category_id')->nullable()->index();
             $table->string('nama_kasir');
             $table->bigInteger('jumlah_pembelian');
             $table->timestamp('tanggal_transaksi');
