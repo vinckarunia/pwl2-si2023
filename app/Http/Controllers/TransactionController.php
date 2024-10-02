@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
-use App\Models\TransaksiPenjualan;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 

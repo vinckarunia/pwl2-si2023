@@ -15,4 +15,17 @@ class Supplier extends Model
 
         return $sql;
     }
+
+    /**
+     * fillable
+     * 
+     * @var array
+     */
+
+    protected $fillable = [
+        'supplier_name',
+        'pic_supplier',
+        'alamat_supplier',
+        'no_hp_pic_supplier'
+    ];
 }
