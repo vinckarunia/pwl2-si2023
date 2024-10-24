@@ -9,7 +9,7 @@ class Supplier extends Model
 {
     use HasFactory;
 
-    protected $table = 'supplier'; 
+    protected $table = 'suppliers'; 
     
     protected $fillable = [
         'nama_supplier',
@@ -21,6 +21,6 @@ class Supplier extends Model
     
     public function get_supplier()
     {
-        return $this->select("supplier.*"); 
+        return $this->select("suppliers.*"); 
     }
 }
