@@ -135,7 +135,7 @@
                                 @forelse ($products as $product)
                                 <tr>
                                     <td class="text-center">
-                                        <img src="{{ asset('storage/images/' . $product->image) }}" class="rounded" style="width: 150px; box-shadow:  3px 3px 20px black">
+                                        <img src="{{ asset('storage/public/images/' . $product->image) }}" class="rounded" style="width: 150px; box-shadow:  3px 3px 20px black">
                                     </td>
                                     <td>{{ $product->nama_supplier }}</td>
                                     <td>{{ $product->title }}</td>

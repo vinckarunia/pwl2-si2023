@@ -49,7 +49,6 @@ return new class extends Migration
             $table->id();
             $table->integer('jumlah_pembelian');
             $table->foreignId('transaksi_penjualan_id')->nullable()->index();
-
             $table->foreignId('product_id')->nullable()->index();
             $table->timestamps();
         });
