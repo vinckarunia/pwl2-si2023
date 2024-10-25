@@ -8,14 +8,14 @@
 </head>
 <style>
     .bg {
-        background: linear-gradient(to right, darkslateblue, salmon);
+        background: #f8f9fa;
     }
 
     #card-img  {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+        background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     #typing5 p {
@@ -23,25 +23,25 @@
     }
 
     .btn{
-        color: white;
-        border: 2px solid white;
+        color: black;
+        border: 2px solid black;
     }
 
     .btn:hover {
-        background: white;
-        color: black;
+        background: black;
+        color: white;
     }
 </style>
 <body class="bg">
     
     <div class="container mt-5 mb-5">
         <div class="row">
-            <h3 style="color: white">Show Product</h3>
+            <h3 style="color: black">Show Product</h3>
             <hr>
             <div class="col-md-4">
                 <div class="card border-0 shadow-5m rounded">
                     <div class="card-body">
-                        <img src="{{ asset('/storage/images/'.$product->image) }}" class="rounded" style="width: 100%;" >
+                        <img src="{{ asset('storage/public/images/'.$product->image) }}" class="rounded" style="width: 100%; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);" >
                     </div>
                 </div>
             </div>

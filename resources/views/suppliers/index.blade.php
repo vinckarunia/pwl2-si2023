@@ -138,6 +138,8 @@
                                             <a href="{{ route('suppliers.show', $supplier->id) }}" class="btn btn-sm btn-dark" id="show">SHOW</a>
                                             <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-sm btn-primary" id="edit">EDIT</a>
                                             @csrf
+
+                                            <button type="submit" class="btn btn-sm" id="hapus">HAPUS</button>
                                         </form>
                                     </td>
                                 </tr>

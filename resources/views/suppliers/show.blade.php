@@ -52,12 +52,12 @@
                         <p class="no_hp">No HP PIC: {{ $supplier->no_hp_pic_supplier }}</p>
                         <hr/>
                         <a href="{{ route('suppliers.index') }}" class="btn ">Kembali</a>
-                        <a href="{{ route('suppliers.destroy', $supplier->id) }}" 
+                        <!-- <a href="{{ route('suppliers.destroy', $supplier->id) }}" 
                            class="btn btn-danger" 
                            onclick="event.preventDefault(); 
                            document.getElementById('delete-form').submit();">
                            Hapus
-                        </a>
+                        </a> -->
 
                         <form id="delete-form" action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST" style="display: none;">
                             @csrf
