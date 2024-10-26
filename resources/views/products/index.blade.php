@@ -118,9 +118,13 @@
             color: black;
         }
 
+        .navbar-brand span {
+            color: #FF6347;
+        }
+
         .navbar-brand:hover {
-        color: black; /* Tetap hitam saat di-hover */
-        text-decoration: none; /* Hilangkan underline atau dekorasi teks */
+        color: black; 
+        text-decoration: none;
         }
 
         .nav-link {
@@ -192,7 +196,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Nama Website</a>
+            <a class="navbar-brand" href="#">5th <span>Apparrel</span></a>
            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
