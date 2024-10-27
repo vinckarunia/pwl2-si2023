@@ -197,10 +197,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Product</a>
+                        <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Supplier</a>
+                        <a class="nav-link" href="{{ route('suppliers.index') }}">Supplier</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Transaksi</a>
