@@ -32,11 +32,11 @@
         }
 
         .text-edit {
-            color: #ff6347; /* Change this color as needed */
+            color: #ff6347;
         }
 
         .text-suppliers {
-            color: #000000; /* Change this color as needed */
+            color: #000000;
         }
 
         label {
@@ -106,7 +106,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Nama Supplier</label>
                                 <input type="text" class="form-control @error('nama_supplier') is-invalid @enderror" name="nama_supplier"
-                                    value="{{ old('nama_supplier', $supplier->nama_supplier) }}" placeholder="Masukkan Nama Supplier">
+                                    value="{{ old('nama_supplier', $supplier->nama_supplier) }}" placeholder=" " id="nama_supplier">
 
                                 @error('nama_supplier')
                                 <div class="alert alert-danger mt-2">
@@ -118,7 +118,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Alamat Supplier</label>
                                 <textarea class="form-control @error('alamat_supplier') is-invalid @enderror"
-                                    name="alamat_supplier" rows="3" placeholder="Masukkan Alamat Supplier">{{ old('alamat_supplier', $supplier->alamat_supplier) }}</textarea>
+                                    name="alamat_supplier" rows="3" placeholder=" " id="alamat_supplier">{{ old('alamat_supplier', $supplier->alamat_supplier) }}</textarea>
 
                                 @error('alamat_supplier')
                                     <div class="alert alert-danger mt-2">
@@ -130,7 +130,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">PIC Supplier</label>
                                 <textarea class="form-control @error('pic_supplier') is-invalid @enderror"
-                                    name="pic_supplier" rows="3" placeholder="Masukkan Nama PIC Supplier">{{ old('pic_supplier', $supplier->pic_supplier) }}</textarea>
+                                    name="pic_supplier" rows="3" placeholder=" " id="pic_supplier">{{ old('pic_supplier', $supplier->pic_supplier) }}</textarea>
 
                                 @error('pic_supplier')
                                     <div class="alert alert-danger mt-2">
@@ -142,7 +142,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">No HP PIC Supplier</label>
                                 <input type="text" class="form-control @error('no_hp_pic_supplier') is-invalid @enderror"
-                                    name="no_hp_pic_supplier" value="{{ old('no_hp_pic_supplier', $supplier->no_hp_pic_supplier) }}" placeholder="Masukkan No HP PIC Supplier">
+                                    name="no_hp_pic_supplier" value="{{ old('no_hp_pic_supplier', $supplier->no_hp_pic_supplier) }}" placeholder=" " id="no_hp_pic_supplier">
 
                                 @error('no_hp_pic_supplier')
                                 <div class="alert alert-danger mt-2">
@@ -164,10 +164,25 @@
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            new TypeIt(".title", {
-                strings: [],
-                speed: 50
-            }).go();
+            new TypeIt(".title", { speed: 50 }).go();
+
+            function typePlaceholder(element, text, speed) {
+                let index = 0;
+                function type() {
+                    if (index < text.length) {
+                        element.setAttribute('placeholder', element.getAttribute('placeholder') + text.charAt(index));
+                        index++;
+                        setTimeout(type, speed);
+                    }
+                }
+                element.setAttribute('placeholder', ''); 
+                type();
+            }
+
+            typePlaceholder(document.getElementById("nama_supplier"), "Masukkan Nama Supplier", 100);
+            typePlaceholder(document.getElementById("alamat_supplier"), "Masukkan Alamat Supplier", 100);
+            typePlaceholder(document.getElementById("pic_supplier"), "Masukkan Nama PIC Supplier", 100);
+            typePlaceholder(document.getElementById("no_hp_pic_supplier"), "Masukkan No HP PIC Supplier", 100);
         });
     </script>
 </body>

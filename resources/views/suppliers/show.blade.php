@@ -7,24 +7,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .bg {
-            background: linear-gradient(to right, darkslateblue, salmon);
+            background: #9ba1a7;
         }
 
-        #card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .container {
+            max-width: 900px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
         }
 
         .btn {
             color: white;
             border: 2px solid white;
+            background-color: #333;
         }
 
         .btn:hover {
             color: black;
-            background: white;
+            background: rgb(39, 178, 0);
+        }
+
+        .btn-danger {
+            color: white;
+            border: 2px solid white;
+            background-color: #333;
+        }
+
+        .btn-danger:hover {
+            color: rgb(252, 252, 252);
+            background: rgb(171, 0, 0);
         }
 
         .text-show {
@@ -32,13 +55,12 @@
         }
 
         .text-supplier {
-            color: #ffffff;
+            color: #000000;
         }
     </style>
 </head>
 
 <body class="bg">
-    
     <div class="container mt-5 mb-5">
         <div class="row">
             <h3 class="title">
@@ -62,8 +84,7 @@
                         <p class="no_hp">No HP PIC: {{ $supplier->no_hp_pic_supplier }}</p>
                         <hr/>
                         <a href="{{ route('suppliers.index') }}" class="btn ">Kembali</a>
-                        <a href="{{ route('suppliers.destroy', $supplier->id) }}" 
-                           class="btn btn-danger" 
+                        <a href="#" class="btn btn-danger" 
                            onclick="event.preventDefault(); 
                            document.getElementById('delete-form').submit();">
                            Hapus
@@ -83,30 +104,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            new TypeIt("#type", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".nama", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".alamat", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".pic", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".no_hp", {
-                strings: [],
-                speed: 50
-            }).go();
+            new TypeIt(".title", { speed: 50 }).go();
+            new TypeIt(".nama", { speed: 50 }).go();
+            new TypeIt(".alamat", { speed: 50 }).go();
+            new TypeIt(".pic", { speed: 50 }).go();
+            new TypeIt(".no_hp", { speed: 50 }).go();
         });
     </script>
 </body>
