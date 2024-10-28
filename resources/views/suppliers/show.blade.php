@@ -5,39 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Supplier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg {
+            background: linear-gradient(to right, darkslateblue, salmon);
+        }
+
+        #card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            color: black;
+            background: white;
+        }
+
+        .text-show {
+            color: #ff6347;
+        }
+
+        .text-supplier {
+            color: #ffffff;
+        }
+    </style>
 </head>
-<style>
-    .bg {
-        background: linear-gradient(to right, darkslateblue, salmon);
-    }
-
-    #card  {
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn {
-        color: white;
-        border: 2px solid white;
-    }
-
-    .btn:hover {
-        color: black;
-        background: white;
-    }
-</style>
 
 <body class="bg">
     
     <div class="container mt-5 mb-5">
         <div class="row">
-            <h3 id="type" style="color: white;">Supplier Identity</h3>
+            <h3 class="title">
+                <span class="text-show">Show</span> 
+                <span class="text-supplier">Supplier</span>
+            </h3>
             <hr>
             <div class="col-md-4">
                 <div class="card border-0 shadow-5m rounded">
-                    <!-- Card content can go here -->
                 </div>
             </div>
             <div>

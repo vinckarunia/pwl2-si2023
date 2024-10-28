@@ -7,4 +7,5 @@ Route::get('/', function () {
 });
 
 //route resource for products
-Route::resource('suppliers', \App\Http\Controllers\SupplierController::class);
+Route::resource('/products', \App\Http\Controllers\ProductController::class);
+Route::resource('/suppliers', \App\Http\Controllers\SupplierController::class);

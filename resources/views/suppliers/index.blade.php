@@ -8,12 +8,98 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
-    .bg {
-        background: linear-gradient(to right, darkslateblue, salmon);
+    body {
+          font-family: "Poppins", sans-serif;
+          background: #DDDDDD;
+        }
+
+    .navbar {
+            padding: 10px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            color: black;
+        }
+
+        .supplier-list {
+            padding: 10px 7%;
+
+        }
+
+        .nav-color {
+            background-color: white;
+            transition: all ease-in-out 0.3s;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .navbar-brand span {
+            color: #FF6347;
+        }
+
+        .navbar-brand:hover {
+        color: black; 
+        text-decoration: none;
+        }
+
+        .nav-link {
+            color: black;
+            margin: 16px;
+            font-size: 1.2rem;
+        }
+
+        .nav-link:hover {
+            color: #FF6347;
+            margin: 16px;
+            font-size: 1.2rem;
+        }
+
+        #hero {
+        background-image: url(storage/public/images/suppliers.jpg);
+        height: 60vh;
+        width: 100%;
+        background-size: cover;
+        background-position: top 25% right 0;
+        padding: 0 80px;
+        justify-content: center;
+        align-items: center; 
+        display: flex;
+        flex-direction: column;
+        color: black;
+        text-align: center;
     }
 
+    #hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height:60vh;
+    background-color: rgba(0, 0, 0, 0.2); 
+    z-index: 1; 
+
+    }
+
+    #hero h3 {
+        position: relative;
+        font-size: 80px;
+        z-index: 2; /* Agar teks muncul di atas overlay */
+    }
+
+        
+   
+
+
     #card {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: white;
     }
 
     .table {
@@ -49,15 +135,15 @@
     }
 
     #btn{
-        color: white;
-        border: 2px solid white;
+        color: black;
+        border: 2px solid black;
         margin-bottom: 10px;
         transition: 0.2s;
     }
 
     #btn:hover{
-        color: black;
-        background: white;
+        color: white;
+        background: black;
     }
 
     #show {
@@ -102,15 +188,40 @@
     }
     
 </style>
-<body class="bg">
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">5th <span>Apparrel</span></a>
+           
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="{{ route('products.index') }}">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('suppliers.index') }}">Supplier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Transaksi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <h3 id="typing" style="color:white; font-weight: 700;"></h3>
+    </section>
+
+
+    <section class="supplier-list">
+        <h3>Our Suppliers List</h3>
+    </section>
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4" id="typing" style="color:white;"></h3>
-                    <hr>
-                </div>
                 <div class="card border-0 shadow-sm rounded" id="card">
                     <div class="card-body" >
                         <a href="{{ route('suppliers.create') }}" class="btn btn-md  mb-3" id="btn">ADD SUPPLIER</a>
@@ -138,6 +249,8 @@
                                             <a href="{{ route('suppliers.show', $supplier->id) }}" class="btn btn-sm btn-dark" id="show">SHOW</a>
                                             <a href="{{ route('suppliers.edit', $supplier->id) }}" class="btn btn-sm btn-primary" id="edit">EDIT</a>
                                             @csrf
+
+                                            <button type="submit" class="btn btn-sm" id="hapus">HAPUS</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -190,8 +303,23 @@
         strings: [],
         speed: 200
         }).go();
+
+        new TypeIt(".supplier-list", {
+        strings: [],
+        speed: 50
+        }).go();
         
         });
+
+
+        const navbar = document.getElementsByTagName('nav')[0];
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 1) {
+                navbar.classList.replace('bg-transparent', 'nav-color')
+            } else if (this.window.scrollY <= 0) {
+                navbar.classList.replace('nav-color', 'bg-transparent')
+            }
+        })
         
 
        

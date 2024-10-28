@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +9,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, darkslateblue, salmon);
+            background: #9ba1a7;
         }
-        
+
+        .container {
+            max-width: 900px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
         .card {
-            background: linear-gradient(to right, rgba(231, 243, 254, 0.3), rgba(255, 255, 255, 0.3));
+            background: white;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         h4 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #ffffff;
             margin-bottom: 20px;
+        }
+
+        .text-edit {
+            color: #ff6347; /* Change this color as needed */
+        }
+
+        .text-suppliers {
+            color: #000000; /* Change this color as needed */
         }
 
         label {
             font-weight: bold;
-            color: #ffffff;
+            color: #333;
         }
 
         .form-control {
             border: 1px solid #ced4da;
             padding: 10px;
             font-size: 14px;
+            margin-bottom: 15px;
         }
 
         .btn-primary {
-            background-color: #6A5ACD;
-            border-color: #007bff;
+            background-color: #333;
+            border-color: #333;
             color: #FFFFFF;
             font-weight: bold;
             padding: 10px 20px;
@@ -45,7 +61,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #4B0082;
+            background-color: #555;
             color: #FFFFFF;
             border: none;
         }
@@ -71,22 +87,26 @@
             margin-top: 10px;
         }
     </style>
-
 </head>
+
+<body>
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="title">Edit Suppliers</h4>
+                <h4 class="title">
+                    <span class="text-edit">Edit</span> 
+                    <span class="text-suppliers">Suppliers</span>
+                </h4>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST"  enctype="multipart/form-data">
+                        <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Nama Supplier</label>
                                 <input type="text" class="form-control @error('nama_supplier') is-invalid @enderror" name="nama_supplier"
-                                value="{{ old('nama_supplier', $supplier->nama_supplier) }}" placeholder="Masukkan Nama Supplier">
+                                    value="{{ old('nama_supplier', $supplier->nama_supplier) }}" placeholder="Masukkan Nama Supplier">
 
                                 @error('nama_supplier')
                                 <div class="alert alert-danger mt-2">
@@ -98,7 +118,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">Alamat Supplier</label>
                                 <textarea class="form-control @error('alamat_supplier') is-invalid @enderror"
-                                name="alamat_supplier" rows="3" placeholder="Masukkan Alamat Supplier">{{ old('alamat_supplier', $supplier->alamat_supplier) }}</textarea>
+                                    name="alamat_supplier" rows="3" placeholder="Masukkan Alamat Supplier">{{ old('alamat_supplier', $supplier->alamat_supplier) }}</textarea>
 
                                 @error('alamat_supplier')
                                     <div class="alert alert-danger mt-2">
@@ -110,7 +130,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">PIC Supplier</label>
                                 <textarea class="form-control @error('pic_supplier') is-invalid @enderror"
-                                name="pic_supplier" rows="3" placeholder="Masukkan Nama PIC Supplier">{{ old('pic_supplier', $supplier->pic_supplier) }}</textarea>
+                                    name="pic_supplier" rows="3" placeholder="Masukkan Nama PIC Supplier">{{ old('pic_supplier', $supplier->pic_supplier) }}</textarea>
 
                                 @error('pic_supplier')
                                     <div class="alert alert-danger mt-2">
@@ -122,7 +142,7 @@
                             <div class="form-group mb-3">
                                 <label class="font-weight-bold">No HP PIC Supplier</label>
                                 <input type="text" class="form-control @error('no_hp_pic_supplier') is-invalid @enderror"
-                                name="no_hp_pic_supplier" value="{{ old('no_hp_pic_supplier', $supplier->no_hp_pic_supplier) }}" placeholder="Masukkan No HP PIC Supplier">
+                                    name="no_hp_pic_supplier" value="{{ old('no_hp_pic_supplier', $supplier->no_hp_pic_supplier) }}" placeholder="Masukkan No HP PIC Supplier">
 
                                 @error('no_hp_pic_supplier')
                                 <div class="alert alert-danger mt-2">
@@ -145,8 +165,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             new TypeIt(".title", {
-            strings: [],
-            speed: 50
+                strings: [],
+                speed: 50
             }).go();
         });
     </script>
