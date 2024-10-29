@@ -8,22 +8,62 @@
     <title>Add New Products - </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background: lightgray">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding-left:30px">
-  <ul class="navbar-nav">
-    <a class="navbar-brand" href="#">Sales</a>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('products') }}">Product</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('suppliers') }}">Suplier</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('transaksi') }}">Transaction</a>
-    </li>
-  </ul>
-</nav>
+<style>
+    .judul h1 {
+        text-align: center;
+        font-weight: 700;
+        color: black;
+        margin-top: 20px;
+    }
+
+    #add-detail {
+        background: #394867;
+        color: white;
+        transition: 0.2s;
+        border:none;
+    }
+
+    #add-detail:hover {
+           background: #212A3E;
+        border:none;
+    }
+
+    #simpan {
+        color: white;
+        background-color: #6A5ACD;
+        transition: 0.2s;
+        margin-left:10px;
+        transition: 0.2s;
+        border:none;
+    }
+
+    #simpan:hover {
+        background-color: #4B0082;
+        border: none;
+    }
+
+    #hapus {
+        color: white;
+        background: #FF7F50;
+        transition: 0.2s;
+        margin-left: 10px;
+        border:none;
+        
+    }
+
+    #hapus:hover {
+        border: none;
+        background:  #FF6347;
+    }
+
+</style>
+<body style="background:  #f8f9fa">
+
+    <section class="judul">
+            <h1>Add Transaction</h1>
+        </section>
+
 
     <div class="container mt-5 mb-5">
         <div class="row">
@@ -55,24 +95,31 @@
                         <input type="number" name="details[0][jumlah_pembelian]" class="form-control" min="1" required>
                     </div>
                     <div class="col-1 d-flex align-items-end">
-                        <button type="button" class="btn btn-danger remove-detail">Hapus</button>
+                        <button type="button" class="btn  remove-detail" id="hapus">Hapus</button>
                     </div>
                 </div>
             </div>
         </div>
-        <button type="button" id="add-detail" class="btn btn-secondary mt-3">Tambah Detail</button>
-        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+        <button type="button" id="add-detail" class="btn  mt-3">Tambah Detail</button>
+        <button type="submit" id="simpan" class="btn  mt-3" id="simpan">Simpan</button>
     </form>
 </div>
 </div>
 </div>
 </div>
 </div>
-
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new TypeIt(".judul", {
+        strings: [],
+        speed: 50
+        }).go();
+
+    });
     let detailIndex = 1;
 
     document.getElementById('add-detail').addEventListener('click', function() {

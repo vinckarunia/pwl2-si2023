@@ -7,22 +7,22 @@
     <title>Show Transaction </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background: lightgray">
+<style>
+   #kembali {
+        background: #394867;
+        color: white;
+        transition: 0.2s;
+        border:none;
+    }
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding-left:30px">
-  <ul class="navbar-nav">
-    <a class="navbar-brand" href="#">Sales</a>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('products') }}">Product</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('suppliers') }}">Suplier</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="{{ url('transaksi') }}">Transaction</a>
-    </li>
-  </ul>
-</nav>
+    #kembali:hover {
+        background: #212A3E;
+        border:none;
+    }
+</style>
+<body style="background:  #f8f9fa">
+
+
 <div class="container mt-5 mb-5">
 <div class="container">
     <h1>Detail Transaksi Penjualan</h1>
@@ -61,12 +61,23 @@
                 </table>
             @endif
 
-            <a href="{{ route('transaksi.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('transaksi.index') }}" class="btn btn-secondary" id="kembali">Kembali</a>
         </div>
     </div>
 </div>
 </div>
-
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+        new TypeIt(document.querySelector('h1'), {
+        strings: [],
+        speed: 50
+        }).go();
+
+      });
+</script>
 </body>
 </html>

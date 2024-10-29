@@ -207,7 +207,7 @@
                         <a class="nav-link" href="{{ route('suppliers.index') }}">Supplier</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Transaksi</a>
+                        <a class="nav-link" href="{{ route('transaksi.index') }}">Transaksi</a>
                     </li>
                 </ul>
             </div>
