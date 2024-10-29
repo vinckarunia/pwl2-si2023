@@ -76,7 +76,7 @@
         @method('PUT')
         <div class="form-group">
             <label for="tanggal">Tanggal Transaksi</label>
-            <input type="date" name="tanggal" class="form-control" id="tanggal" value="{{ $transaksi->tanggal_transaksi }}" required>
+            <input type="date" name="tanggal_transaksi" class="form-control" id="tanggal" value="{{ $transaksi->tanggal_transaksi }}" required>
         </div>
 
         <h4 class="mt-4">Detail Transaksi</h4>
