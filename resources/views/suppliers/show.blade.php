@@ -5,39 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Supplier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,300;1,500;1,800;1,900&family=Poppins:wght@400;600&family=Rancho&display=swap');
+        .bg {
+            background: #9ba1a7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn {
+            color: white;
+            border: 2px solid white;
+            background-color: #333;
+        }
+
+        .btn:hover {
+            color: black;
+            background: rgb(39, 178, 0);
+        }
+
+        .btn-danger {
+            color: white;
+            border: 2px solid white;
+            background-color: #333;
+        }
+
+        .btn-danger:hover {
+            color: rgb(252, 252, 252);
+            background: rgb(171, 0, 0);
+        }
+
+        .text-show {
+            color: #ff6347;
+        }
+
+        .text-supplier {
+            color: #000000;
+        }
+    </style>
 </head>
-<style>
-    .bg {
-        background: linear-gradient(to right, darkslateblue, salmon);
-    }
-
-    #card  {
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn {
-        color: white;
-        border: 2px solid white;
-    }
-
-    .btn:hover {
-        color: black;
-        background: white;
-    }
-</style>
 
 <body class="bg">
-    
     <div class="container mt-5 mb-5">
         <div class="row">
-            <h3 id="type" style="color: white;">Supplier Identity</h3>
+            <h3 class="title">
+                <span class="text-show">Show</span> 
+                <span class="text-supplier">Supplier</span>
+            </h3>
             <hr>
             <div class="col-md-4">
                 <div class="card border-0 shadow-5m rounded">
-                    <!-- Card content can go here -->
                 </div>
             </div>
             <div>
@@ -73,30 +106,11 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            new TypeIt("#type", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".nama", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".alamat", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".pic", {
-                strings: [],
-                speed: 50
-            }).go();
-
-            new TypeIt(".no_hp", {
-                strings: [],
-                speed: 50
-            }).go();
+            new TypeIt(".title", { speed: 50 }).go();
+            new TypeIt(".nama", { speed: 50 }).go();
+            new TypeIt(".alamat", { speed: 50 }).go();
+            new TypeIt(".pic", { speed: 50 }).go();
+            new TypeIt(".no_hp", { speed: 50 }).go();
         });
     </script>
 </body>
