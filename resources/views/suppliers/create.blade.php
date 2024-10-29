@@ -10,7 +10,7 @@
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,300;1,500;1,800;1,900&family=Poppins:wght@400;600&family=Rancho&display=swap');
 body {
-    background: #9ba1a7;
+    background: #DDDDDD;
 }
 
 /* Container styling */

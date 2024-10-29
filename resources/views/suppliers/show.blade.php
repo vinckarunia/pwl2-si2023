@@ -8,7 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,300;1,500;1,800;1,900&family=Poppins:wght@400;600&family=Rancho&display=swap');
         .bg {
-            background: #9ba1a7;
+            background: #DDDDDD;
         }
 
         .container {
@@ -30,20 +30,20 @@
         }
 
         .btn {
-            color: white;
-            border: 2px solid white;
-            background-color: #333;
+            color: black;
+            border: 2px solid black;
+            background-color: ##FF7F50;
         }
 
         .btn:hover {
             color: black;
-            background: rgb(39, 178, 0);
+            background: #FF6347;
         }
 
         .btn-danger {
-            color: white;
-            border: 2px solid white;
-            background-color: #333;
+            color: black;
+            border: 2px solid black;
+            background: white;
         }
 
         .btn-danger:hover {
@@ -85,12 +85,12 @@
                         <p class="no_hp">No HP PIC: {{ $supplier->no_hp_pic_supplier }}</p>
                         <hr/>
                         <a href="{{ route('suppliers.index') }}" class="btn ">Kembali</a>
-                        <!-- <a href="{{ route('suppliers.destroy', $supplier->id) }}" 
+                        <a href="{{ route('suppliers.destroy', $supplier->id) }}" 
                            class="btn btn-danger" 
                            onclick="event.preventDefault(); 
                            document.getElementById('delete-form').submit();">
                            Hapus
-                        </a> -->
+                        </a>
 
                         <form id="delete-form" action="{{ route('suppliers.destroy', $supplier->id) }}" method="POST" style="display: none;">
                             @csrf

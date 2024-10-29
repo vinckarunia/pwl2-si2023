@@ -10,7 +10,7 @@
 <body>
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,300;0,400;1,300;1,500;1,800;1,900&family=Poppins:wght@400;600&family=Rancho&display=swap');
         body {
           font-family: "Poppins", sans-serif;
           background: #DDDDDD;
@@ -219,7 +219,7 @@
 
 
     <section class="transaksi-list">
-        <h3>Our Suppliers List</h3>
+        <h3>Our Transaction List</h3>
     </section>
 
 <div class="container mt-5">
