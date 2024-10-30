@@ -40,16 +40,18 @@ return new class extends Migration
 
         Schema::create('transaksi_penjualans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kasir');
-            $table->timestamp('tanggal_transaksi'); 
+            $table->date('tanggal_transaksi'); 
+            $table->decimal('total');
+            $table->string('email_pembeli');
             $table->timestamps(); 
         });
 
         Schema::create('detail_transaksi_penjualans', function (Blueprint $table) {
             $table->id();
-            $table->integer('jumlah_pembelian');
             $table->foreignId('transaksi_penjualan_id')->nullable()->index();
             $table->foreignId('product_id')->nullable()->index();
+            $table->integer('jumlah_pembelian');
+            $table->decimal('harga');
             $table->timestamps();
         });
     }

@@ -45,9 +45,10 @@ class TransaksiPenjualanController extends Controller
     {
         $validatedData = $this->validateTransaction($request);
 
-        DB::transaction(function () use ($validatedData) {
+        $transaksi = DB::transaction(function () use ($validatedData) {
             $transaksi = TransaksiPenjualan::create([
                 'tanggal_transaksi' => $validatedData['tanggal_transaksi'],
+                'email_pembeli' => $validatedData['email_pembeli'],
                 'total' => 0,
             ]);
 
@@ -66,10 +67,15 @@ class TransaksiPenjualanController extends Controller
                 ]);
             }
             $transaksi->update(['total' => $total]);
+
+            return $transaksi;
         });
 
+        // Send the email to the buyer's email_pembeli
+        $this->sendEmail($transaksi->id);
+
         return redirect()->route('transaksi.index')
-                         ->with('success', 'Transaksi penjualan berhasil ditambahkan.');
+                        ->with('success', 'Transaksi penjualan berhasil ditambahkan dan email telah dikirim.');
     }
 
     /**
@@ -111,6 +117,7 @@ class TransaksiPenjualanController extends Controller
         DB::transaction(function () use ($validatedData, $transaksi) {
             $transaksi->update([
                 'tanggal_transaksi' => $validatedData['tanggal_transaksi'],
+                'email_pembeli' => $validatedData['email_pembeli'], // Update email if it has changed
             ]);
 
             // Clear existing details
@@ -134,8 +141,11 @@ class TransaksiPenjualanController extends Controller
             $transaksi->update(['total' => $total]);
         });
 
+        // Send the email to the updated email_pembeli
+        $this->sendEmail($transaksi->id);
+
         return redirect()->route('transaksi.index')
-                         ->with('success', 'Transaksi penjualan berhasil diperbarui.');
+                        ->with('success', 'Transaksi penjualan berhasil diperbarui dan email telah dikirim.');
     }
 
     /**
@@ -161,15 +171,17 @@ class TransaksiPenjualanController extends Controller
     {
         return $request->validate([
             'tanggal_transaksi' => 'required|date',
+            'email_pembeli' => 'required|min:1',
             'details.*.product_id' => 'required|integer|exists:products,id',
             'details.*.jumlah_pembelian' => 'required|integer|min:1',
         ]);
     }
 
     // send email
-    public function sendEmail($to, $id)
+    public function sendEmail($id)
     {
         $transaksi = TransaksiPenjualan::with('details.product')->findOrFail($id);
+        $to = $transaksi->email_pembeli;
 
         Mail::send('transaksi.show', ['transaksi' => $transaksi], function ($message) use ($to, $transaksi) {
             $message->to($to)

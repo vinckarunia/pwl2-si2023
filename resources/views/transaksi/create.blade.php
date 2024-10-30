@@ -77,6 +77,14 @@
             <input type="date" name="tanggal_transaksi" class="form-control" id="tanggal" required>
         </div>
 
+        <div class="form-group mb-3">
+            <label>Email</label>
+                <input type="email" class="form-control @error('email_pembeli') is-invalid @enderror" id="email_pembeli" name="email_pembeli" placeholder="Masukkan Email Anda">
+                    @error('email_pembeli')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+        </div>
+
         <h4 class="mt-4">Detail Transaksi</h4>
         <div id="details">
             <div class="detail-item mb-3">

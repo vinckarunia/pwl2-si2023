@@ -76,8 +76,17 @@
         @method('PUT')
         <div class="form-group">
             <label for="tanggal">Tanggal Transaksi</label>
-            <input type="date" name="tanggal_transaksi" class="form-control" id="tanggal" value="{{ $transaksi->tanggal_transaksi }}" required>
+            <input type="date" name="tanggal_transaksi" class="form-control" id="tanggal_transaksi" value="{{ $transaksi->tanggal_transaksi }}" required>
         </div>
+
+        <div class="form-group mb-3">
+            <label>Email</label>
+            <input type="email" name="email_pembeli" class="form-control" id="email_pembeli" value="{{ $transaksi->email_pembeli }}" required>
+            @error('email_pembeli')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         <h4 class="mt-4">Detail Transaksi</h4>
         <div id="details">

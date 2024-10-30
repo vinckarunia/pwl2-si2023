@@ -14,6 +14,7 @@ class TransaksiPenjualan extends Model
 
     protected $fillable = [
         'tanggal_transaksi',
+        'email_pembeli',
         'total'
     ];
 
