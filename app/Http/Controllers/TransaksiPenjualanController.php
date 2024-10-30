@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 
 class TransaksiPenjualanController extends Controller
 {
@@ -163,5 +164,18 @@ class TransaksiPenjualanController extends Controller
             'details.*.product_id' => 'required|integer|exists:products,id',
             'details.*.jumlah_pembelian' => 'required|integer|min:1',
         ]);
+    }
+
+    // send email
+    public function sendEmail($to, $id)
+    {
+        $transaksi = TransaksiPenjualan::with('details.product')->findOrFail($id);
+
+        Mail::send('transaksi.show', ['transaksi' => $transaksi], function ($message) use ($to, $transaksi) {
+            $message->to($to)
+                    ->subject("Detail Transaksi: {$transaksi->id} - Total Tagihan Rp " . number_format($transaksi->total, 2, ',', '.'));
+        });
+
+        return response()->json(['message' => 'Email sent successfully!']);
     }
 }
